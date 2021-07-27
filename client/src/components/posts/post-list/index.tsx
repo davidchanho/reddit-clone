@@ -8,7 +8,7 @@ function PostList() {
   const { loading, error, data } = useQuery(PostsQuery);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error</p>;
 
   return data.posts.map((post: IPost) => {
     return <Post key={post._id} {...post} />;

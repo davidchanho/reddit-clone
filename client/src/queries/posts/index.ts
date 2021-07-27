@@ -5,6 +5,12 @@ export const PostsQuery = gql`
     posts {
       _id
       title
+      body
+      userName
+      likes
+      comments
+      subreddit
+      date
     }
   }
 `;
