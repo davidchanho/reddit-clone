@@ -1,0 +1,12 @@
+[
+  {
+    "_id": "60fee9f278463328c48b16e4",
+    "name": "news",
+    "icon": "/assets/news.svg"
+  },
+  {
+    "_id": "60fee9f278463328c48b16e5",
+    "name": "movies",
+    "icon": "/assets/movies.svg"
+  }
+]

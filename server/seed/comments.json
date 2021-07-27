@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "60feeadc78463328c48b16ee",
+    "postId": "60fee90078463328c48b16e0",
+    "userId": "60feea9e78463328c48b16e8",
+    "body": "lorem",
+    "likes": 1234,
+    "date": "1627318430524"
+  },
+  {
+    "_id": "60feeadc78463328c48b16ef",
+    "postId": "60fee90078463328c48b16e1",
+    "userId": "60feea9e78463328c48b16e9",
+    "body": "lorem",
+    "likes": 4567,
+    "date": "1627318430524"
+  }
+]

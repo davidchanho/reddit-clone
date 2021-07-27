@@ -1,0 +1,21 @@
+[{
+  "_id": "60fee90078463328c48b16e0",
+  "title": "The Awakening",
+  "body": "lorem",
+  "views": 1234,
+  "likes": 5678,
+  "comments": 1,
+  "subreddit": "news",
+  "date": "1627318430524",
+  "userName": "Kate Chopin"
+},{
+  "_id": "60fee90078463328c48b16e1",
+  "title": "City of Glass",
+  "body": "lorem",
+  "views": 1234,
+  "likes": 5678,
+  "comments": 1,
+  "subreddit": "movies",
+  "date": "1627318430524",
+  "userName": "Paul Auster"
+}]
