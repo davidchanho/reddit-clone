@@ -7,16 +7,16 @@ export const typeDefs = gql`
   }
 
   type User {
-    _id: String
-    name: String
-    email: String
-    avatar: String
+    _id: ID!
+    name: String!
+    email: String!
+    avatar: String!
     followers: [User]
     subreddits: [Subreddit]
     bookmarks: [Post]
     posts: [Post]
     comments: [Comment]
-    date: String
+    date: String!
   }
 
   input UserInput {
@@ -28,5 +28,8 @@ export const typeDefs = gql`
   type Mutation {
     addUser(user: UserInput): User
     removeUser(_id: ID!): User
+    addFollower(followerId: ID!, userId: ID!): User
+    addBookmark(postId: ID!, userId: ID!): Post
+    addSubredditToUser(subredditId: ID!, userId: ID!): Subreddit
   }
 `;

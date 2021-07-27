@@ -7,20 +7,18 @@ export const typeDefs = gql`
   }
 
   type Comment {
-    _id: String
-    postId: String
-    post: Post
-    userId: String
-    user: User
-    body: String
+    _id: ID!
+    post: Post!
+    user: User!
+    body: String!
     likes: Int
-    date: String
+    date: String!
     comments: [Comment]
   }
 
   input CommentInput {
-    postId: String!
-    userId: String!
+    post: String!
+    user: String!
     body: String!
   }
 

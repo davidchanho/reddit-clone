@@ -28,9 +28,9 @@ export const commentsApi = {
     }
   },
   getUser: (parent: any, args: any, { User }: any) => {
-    return User.findById(parent.userId);
+    return User.findById(parent.user);
   },
   getPost: (parent: any, args: any, { Post }: any) => {
-    return Post.findById(parent.postId);
+    return Post.findById(parent.post);
   },
 };

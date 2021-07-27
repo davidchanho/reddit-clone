@@ -7,22 +7,21 @@ export const typeDefs = gql`
   }
 
   type Post {
-    _id: String
-    title: String
-    body: String
-    userName: String
-    user: User
+    _id: ID!
+    title: String!
+    body: String!
+    user: User!
     views: Int
     likes: Int
-    comments: Int
-    subreddit: String
-    date: String
+    comments: [Comment]
+    subreddit: Subreddit!
+    date: String!
   }
 
   input PostInput {
     title: String!
     body: String!
-    userName: String!
+    user: String!
     subreddit: String!
   }
 

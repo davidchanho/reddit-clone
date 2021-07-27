@@ -7,9 +7,9 @@ export const typeDefs = gql`
   }
 
   type Subreddit {
-    _id: String
-    name: String
-    icon: String
+    _id: ID!
+    name: String!
+    icon: String!
     posts: [Post]
   }
 

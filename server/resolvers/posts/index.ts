@@ -7,6 +7,8 @@ const Query = {
 
 const Post = {
   user: postsApi.getUser,
+  comments: postsApi.getComments,
+  subreddit: postsApi.getSubreddit,
 };
 
 const Mutation = {

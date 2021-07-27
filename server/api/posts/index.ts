@@ -28,6 +28,12 @@ export const postsApi = {
     }
   },
   getUser: (parent: any, args: any, { User }: any) => {
-    return User.findOne({ name: parent.userName });
+    return User.findOne({ _id: parent.user });
+  },
+  getComments: (parent: any, args: any, { Comment }: any) => {
+    return Comment.find({ post: parent._id });
+  },
+  getSubreddit: (parent: any, args: any, { Subreddit }: any) => {
+    return Subreddit.findOne({ _id: parent.subreddit });
   },
 };

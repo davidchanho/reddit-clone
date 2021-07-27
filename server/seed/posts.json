@@ -5,10 +5,10 @@
     "body": "lorem",
     "views": 1234,
     "likes": 5678,
-    "comments": 1,
+    "comments": [],
     "subreddit": "news",
     "date": "1627318430524",
-    "userName": "Kate Chopin"
+    "user": "Kate Chopin"
   },
   {
     "_id": "60fee90078463328c48b16e1",
@@ -16,9 +16,9 @@
     "body": "lorem",
     "views": 1234,
     "likes": 5678,
-    "comments": 1,
+    "comments": [],
     "subreddit": "movies",
     "date": "1627318430524",
-    "userName": "Paul Auster"
+    "user": "Paul Auster"
   }
 ]

@@ -28,6 +28,6 @@ export const subredditsApi = {
     }
   },
   getPosts: (parent: any, args: any, { Post }: any) => {
-    return Post.find({ subreddit: parent.name });
+    return Post.find({ subreddit: parent._id });
   },
 };
