@@ -10,7 +10,13 @@ const Comment = {
   post: commentsApi.getPost,
 };
 
+const Mutation = {
+  addComment: commentsApi.addComment,
+  removeComment: commentsApi.removeComment,
+};
+
 export const resolvers = {
   Query,
   Comment,
+  Mutation,
 };

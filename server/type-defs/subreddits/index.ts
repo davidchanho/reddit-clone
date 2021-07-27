@@ -12,4 +12,14 @@ export const typeDefs = gql`
     icon: String
     posts: [Post]
   }
+
+  input SubredditInput {
+    name: String!
+    icon: String!
+  }
+
+  type Mutation {
+    addSubreddit(subreddit: SubredditInput): Subreddit
+    removeSubreddit(_id: ID!): Subreddit
+  }
 `;

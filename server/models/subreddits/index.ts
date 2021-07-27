@@ -1,9 +1,8 @@
 import mongoose from "mongoose";
 
 const subredditSchema = new mongoose.Schema({
-  _id: String,
-  name: String,
-  icon: String,
+  name: { type: String, required: true },
+  icon: { type: String, required: true },
 });
 
 const Subreddit = mongoose.model("subreddit", subredditSchema);

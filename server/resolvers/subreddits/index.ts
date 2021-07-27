@@ -9,7 +9,13 @@ const Subreddit = {
   posts: subredditsApi.getPosts,
 };
 
+const Mutation = {
+  addSubreddit: subredditsApi.addSubreddit,
+  removeSubreddit: subredditsApi.removeSubreddit,
+};
+
 export const resolvers = {
   Query,
   Subreddit,
+  Mutation,
 };

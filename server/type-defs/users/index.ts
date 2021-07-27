@@ -18,4 +18,15 @@ export const typeDefs = gql`
     comments: [Comment]
     date: String
   }
+
+  input UserInput {
+    name: String!
+    email: String!
+    avatar: String!
+  }
+
+  type Mutation {
+    addUser(user: UserInput): User
+    removeUser(_id: ID!): User
+  }
 `;

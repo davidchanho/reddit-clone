@@ -13,7 +13,7 @@ const schema = makeExecutableSchema({
 
 (async function startApolloServer() {
   client();
-  const server = new ApolloServer({ schema, context: { db } });
+  const server = new ApolloServer({ schema, context: db });
   await server.start();
 
   const app = express();

@@ -1,14 +1,36 @@
 export const commentsApi = {
-  getComments: (parent: any, args: any, context: any) => {
-    return context.db.Comment.find({});
+  getComments: (parent: any, args: any, { Comment }: any) => {
+    return Comment.find({});
   },
-  getComment: (parent: any, args: any, context: any) => {
-    return context.db.Comment.findById(args._id);
+  getComment: (parent: any, args: any, { Comment }: any) => {
+    return Comment.findById(args._id);
   },
-  getUser: (parent: any, args: any, context: any) => {
-    return context.db.User.findById(parent.userId);
+  addComment: async (parent: any, args: any, { Comment }: any) => {
+    try {
+      const newComment = new Comment(args.comment);
+      const comment = await newComment.save();
+      return comment;
+    } catch (error) {
+      throw new Error(error);
+    }
   },
-  getPost: (parent: any, args: any, context: any) => {
-    return context.db.Post.findById(parent.postId);
+  removeComment: async (parent: any, args: any, { Comment }: any) => {
+    try {
+      const comment = await Comment.findById(args._id);
+      if (comment) {
+        await comment.delete();
+        return "Comment deleted!";
+      } else {
+        return "Comment does not exist";
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  getUser: (parent: any, args: any, { User }: any) => {
+    return User.findById(parent.userId);
+  },
+  getPost: (parent: any, args: any, { Post }: any) => {
+    return Post.findById(parent.postId);
   },
 };

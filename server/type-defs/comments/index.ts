@@ -17,4 +17,15 @@ export const typeDefs = gql`
     date: String
     comments: [Comment]
   }
+
+  input CommentInput {
+    postId: String!
+    userId: String!
+    body: String!
+  }
+
+  type Mutation {
+    addComment(comment: CommentInput): Comment
+    removeComment(_id: ID!): Comment
+  }
 `;

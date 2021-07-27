@@ -5,7 +5,7 @@ export const typeDefs = gql`
     posts: [Post]
     post(_id: ID!): Post
   }
-  
+
   type Post {
     _id: String
     title: String
@@ -17,5 +17,17 @@ export const typeDefs = gql`
     comments: Int
     subreddit: String
     date: String
+  }
+
+  input PostInput {
+    title: String!
+    body: String!
+    userName: String!
+    subreddit: String!
+  }
+
+  type Mutation {
+    addPost(post: PostInput): Post
+    removePost(_id: ID!): Post
   }
 `;
