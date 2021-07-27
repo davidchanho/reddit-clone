@@ -15,5 +15,6 @@ export const typeDefs = gql`
     body: String
     likes: Int
     date: String
+    comments: [Comment]
   }
 `;
