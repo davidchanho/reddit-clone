@@ -7,4 +7,9 @@ export const resolvers = {
       return context.db.Post.findById(args._id);
     },
   },
+  Post: {
+    user: (parent: any, args: any, context: any) => {
+      return context.db.User.findOne({ name: parent.userName });
+    },
+  },
 };

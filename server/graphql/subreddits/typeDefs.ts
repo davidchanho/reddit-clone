@@ -10,5 +10,6 @@ export const typeDefs = gql`
     _id: String
     name: String
     icon: String
+    posts: [Post]
   }
 `;

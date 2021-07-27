@@ -11,6 +11,7 @@ export const typeDefs = gql`
     title: String
     body: String
     userName: String
+    user: User
     views: Int
     likes: Int
     comments: Int

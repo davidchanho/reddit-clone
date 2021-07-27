@@ -9,7 +9,9 @@ export const typeDefs = gql`
   type Comment {
     _id: String
     postId: String
+    post: Post
     userId: String
+    user: User
     body: String
     likes: Int
     date: String

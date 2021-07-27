@@ -2,7 +2,7 @@
   {
     "_id": "60feeadc78463328c48b16ee",
     "postId": "60fee90078463328c48b16e0",
-    "userId": "60feea9e78463328c48b16e8",
+    "userId": "60fefa7d78463328c48b16f4",
     "body": "lorem",
     "likes": 1234,
     "date": "1627318430524"
@@ -10,7 +10,7 @@
   {
     "_id": "60feeadc78463328c48b16ef",
     "postId": "60fee90078463328c48b16e1",
-    "userId": "60feea9e78463328c48b16e9",
+    "userId": "60fefa7d78463328c48b16f5",
     "body": "lorem",
     "likes": 4567,
     "date": "1627318430524"

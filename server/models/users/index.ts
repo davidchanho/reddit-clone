@@ -5,11 +5,11 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   avatar: String,
-  followers: [{ type: Schema.Types.ObjectId, path: "user" }],
-  subreddits: [{ type: Schema.Types.ObjectId, path: "subreddit" }],
-  bookmarks: [{ type: Schema.Types.ObjectId, path: "post" }],
-  posts: [{ type: Schema.Types.ObjectId, path: "post" }],
-  comments: [{ type: Schema.Types.ObjectId, path: "comment" }],
+  followers: [{ type: Schema.Types.ObjectId, ref: "user" }],
+  subreddits: [{ type: Schema.Types.ObjectId, ref: "subreddit" }],
+  bookmarks: [{ type: Schema.Types.ObjectId, ref: "post" }],
+  posts: [{ type: Schema.Types.ObjectId, ref: "post" }],
+  comments: [{ type: Schema.Types.ObjectId, ref: "comment" }],
   date: String,
 });
 

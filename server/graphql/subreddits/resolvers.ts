@@ -7,4 +7,9 @@ export const resolvers = {
       return context.db.Subreddit.findById(args._id);
     },
   },
+  Subreddit: {
+    posts: (parent: any, args: any, context: any) => {
+      return context.db.Post.find({ subreddit: parent.name });
+    },
+  },
 };
