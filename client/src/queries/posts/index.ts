@@ -6,11 +6,19 @@ export const PostsQuery = gql`
       _id
       title
       body
-      userName
       likes
-      comments
-      subreddit
       date
+      user {
+        name
+      }
+    }
+  }
+`;
+
+export const PostQuery = gql`
+  query Query($_id: ID!) {
+    post(_id: $_id) {
+      title
     }
   }
 `;

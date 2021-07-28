@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Posts from "./pages/posts";
+import PostPage from "./pages/post";
+import PostsPage from "./pages/posts";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Posts />} />
+        <Route path="/" element={<PostsPage />} />
+        <Route path="/posts/:_id" element={<PostPage />} />
       </Routes>
     </BrowserRouter>
   );
