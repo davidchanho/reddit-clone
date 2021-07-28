@@ -31,5 +31,8 @@ export const typeDefs = gql`
     addFollower(followerId: ID!, userId: ID!): User
     addBookmark(postId: ID!, userId: ID!): Post
     addSubredditToUser(subredditId: ID!, userId: ID!): Subreddit
+    removeFollower(followerId: ID!, userId: ID!): User
+    removeBookmark(postId: ID!, userId: ID!): Post
+    removeSubredditFromUser(subredditId: ID!, userId: ID!): Subreddit
   }
 `;

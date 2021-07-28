@@ -7,8 +7,6 @@ const userSchema = new mongoose.Schema({
   followers: [{ type: Schema.Types.ObjectId, ref: "user" }],
   subreddits: [{ type: Schema.Types.ObjectId, ref: "subreddit" }],
   bookmarks: [{ type: Schema.Types.ObjectId, ref: "post" }],
-  posts: [{ type: Schema.Types.ObjectId, ref: "post" }],
-  comments: [{ type: Schema.Types.ObjectId, ref: "comment" }],
   date: { type: String, default: new Date().toString() },
 });
 

@@ -2,6 +2,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import { AppStateProvider } from "./context";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
@@ -13,7 +14,9 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <AppStateProvider>
+        <App />
+      </AppStateProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")

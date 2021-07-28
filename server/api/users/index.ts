@@ -50,8 +50,9 @@ export const usersApi = {
         if (user) {
           user.followers.push(follower);
           user.save();
+        } else {
+          return "User does not exist";
         }
-        return "User does not exist";
       } else {
         return "Follower does not exist";
       }
@@ -67,8 +68,9 @@ export const usersApi = {
         if (user) {
           user.bookmarks.push(post);
           user.save();
+        } else {
+          return "User does not exist";
         }
-        return "User does not exist";
       } else {
         return "Post does not exist";
       }
@@ -84,10 +86,49 @@ export const usersApi = {
         if (user) {
           user.subreddits.push(subreddit);
           user.save();
+        } else {
+          return "User does not exist";
         }
-        return "User does not exist";
       } else {
         return "Subreddit does not exist";
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  removeFollower: async (parent: any, args: any, { User }: any) => {
+    const user = await User.findOne({ _id: args.userId });
+    try {
+      if (user) {
+        user.followers.pull({ _id: args.followerId });
+        user.save();
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  removeBookmark: async (parent: any, args: any, { User }: any) => {
+    const user = await User.findOne({ _id: args.userId });
+    try {
+      if (user) {
+        user.bookmarks.pull({ _id: args.postId });
+        user.save();
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  removeSubredditFromUser: async (
+    parent: any,
+    args: any,
+    { Subreddit, User }: any
+  ) => {
+    const user = await User.findOne({ _id: args.userId });
+    console.log("user", user);
+    try {
+      if (user) {
+        user.subreddits.pull({ _id: args.subredditId });
+        user.save();
       }
     } catch (error) {
       throw new Error(error);
