@@ -13,6 +13,7 @@ const Comment = {
 const Mutation = {
   addComment: commentsApi.addComment,
   removeComment: commentsApi.removeComment,
+  updateComment: commentsApi.updateComment,
 };
 
 export const resolvers = {

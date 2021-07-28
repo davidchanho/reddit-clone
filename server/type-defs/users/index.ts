@@ -20,14 +20,15 @@ export const typeDefs = gql`
   }
 
   input UserInput {
-    name: String!
-    email: String!
-    avatar: String!
+    name: String
+    email: String
+    avatar: String
   }
 
   type Mutation {
     addUser(user: UserInput): User
     removeUser(_id: ID!): User
+    updateUser(_id: ID!, user: UserInput): User
     addFollower(followerId: ID!, userId: ID!): User
     addBookmark(postId: ID!, userId: ID!): Post
     addSubredditToUser(subredditId: ID!, userId: ID!): Subreddit

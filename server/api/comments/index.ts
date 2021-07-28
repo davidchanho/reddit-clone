@@ -27,6 +27,9 @@ export const commentsApi = {
       throw new Error(error);
     }
   },
+  updateComment: async (parent: any, args: any, { Comment }: any) => {
+    return await Comment.findOneAndUpdate({ _id: args._id }, args.comment);
+  },
   getUser: (parent: any, args: any, { User }: any) => {
     return User.findById(parent.user);
   },

@@ -19,14 +19,15 @@ export const typeDefs = gql`
   }
 
   input PostInput {
-    title: String!
-    body: String!
-    user: String!
-    subreddit: String!
+    title: String
+    body: String
+    user: String
+    subreddit: String
   }
 
   type Mutation {
     addPost(post: PostInput): Post
     removePost(_id: ID!): Post
+    updatePost(_id: ID!, post: PostInput): Post
   }
 `;

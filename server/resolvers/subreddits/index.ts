@@ -12,6 +12,7 @@ const Subreddit = {
 const Mutation = {
   addSubreddit: subredditsApi.addSubreddit,
   removeSubreddit: subredditsApi.removeSubreddit,
+  updateSubreddit: subredditsApi.updateSubreddit,
 };
 
 export const resolvers = {

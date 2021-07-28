@@ -14,6 +14,7 @@ const Post = {
 const Mutation = {
   addPost: postsApi.addPost,
   removePost: postsApi.removePost,
+  updatePost: postsApi.updatePost,
 };
 
 export const resolvers = {

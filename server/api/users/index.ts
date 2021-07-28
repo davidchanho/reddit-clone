@@ -27,6 +27,9 @@ export const usersApi = {
       throw new Error(error);
     }
   },
+  updateUser: async (parent: any, args: any, { User }: any) => {
+    return await User.findOneAndUpdate({ _id: args._id }, args.user);
+  },
   getComments: (parent: any, args: any, { Comment }: any) => {
     return Comment.find({ user: parent._id });
   },
@@ -37,7 +40,7 @@ export const usersApi = {
     return User.find({ followers: { $in: parent.followers } });
   },
   getBookmarks: (parent: any, args: any, { Post }: any) => {
-    return Post.find({ user: { $in: parent.bookmarks } });
+    return Post.find({ _id: { $in: parent.bookmarks } });
   },
   getSubreddits: (parent: any, args: any, { Subreddit }: any) => {
     return Subreddit.find({ _id: { $in: parent.subreddits } });

@@ -27,6 +27,9 @@ export const subredditsApi = {
       throw new Error(error);
     }
   },
+  updateSubreddit: async (parent: any, args: any, { Subreddit }: any) => {
+    return await Subreddit.findOneAndUpdate({ _id: args._id }, args.subreddit);
+  },
   getPosts: (parent: any, args: any, { Post }: any) => {
     return Post.find({ subreddit: parent._id });
   },

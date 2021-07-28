@@ -27,6 +27,9 @@ export const postsApi = {
       throw new Error(error);
     }
   },
+  updatePost: async (parent: any, args: any, { Post }: any) => {
+    return await Post.findOneAndUpdate({ _id: args._id }, args.post);
+  },
   getUser: (parent: any, args: any, { User }: any) => {
     return User.findOne({ _id: parent.user });
   },

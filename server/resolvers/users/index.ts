@@ -16,6 +16,7 @@ const User = {
 const Mutation = {
   addUser: usersApi.addUser,
   removeUser: usersApi.removeUser,
+  updateUser: usersApi.updateUser,
   addFollower: usersApi.addFollower,
   addBookmark: usersApi.addBookmark,
   addSubredditToUser: usersApi.addSubreddit,
