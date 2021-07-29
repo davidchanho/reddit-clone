@@ -11,8 +11,9 @@ const schema = makeExecutableSchema({
   resolvers,
 });
 
+client();
+
 (async function startApolloServer() {
-  client();
   const server = new ApolloServer({ schema, context: db });
   await server.start();
 

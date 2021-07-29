@@ -6,25 +6,13 @@ export const postsApi = {
     return Post.findById(args._id);
   },
   addPost: async (parent: any, args: any, { Post }: any) => {
-    try {
-      const newPost = new Post(args.post);
-      const post = await newPost.save();
-      return post;
-    } catch (error) {
-      throw new Error(error);
-    }
+    const post = new Post(args.post);
+    return await post.save();
   },
   removePost: async (parent: any, args: any, { Post }: any) => {
-    try {
-      const post = await Post.findById(args._id);
-      if (post) {
-        await post.delete();
-        return "Post deleted!";
-      } else {
-        return "Post does not exist";
-      }
-    } catch (error) {
-      throw new Error(error);
+    const post = await Post.findById(args._id);
+    if (post) {
+      return await post.delete();
     }
   },
   updatePost: async (parent: any, args: any, { Post }: any) => {

@@ -14,9 +14,9 @@ export const typeDefs = gql`
     followers: [User]
     subreddits: [Subreddit]
     bookmarks: [Post]
+    date: String!
     posts: [Post]
     comments: [Comment]
-    date: String!
   }
 
   input UserInput {
@@ -29,9 +29,11 @@ export const typeDefs = gql`
     addUser(user: UserInput): User
     removeUser(_id: ID!): User
     updateUser(_id: ID!, user: UserInput): User
+
     addFollower(followerId: ID!, userId: ID!): User
     addBookmark(postId: ID!, userId: ID!): Post
     addSubredditToUser(subredditId: ID!, userId: ID!): Subreddit
+    
     removeFollower(followerId: ID!, userId: ID!): User
     removeBookmark(postId: ID!, userId: ID!): Post
     removeSubredditFromUser(subredditId: ID!, userId: ID!): Subreddit

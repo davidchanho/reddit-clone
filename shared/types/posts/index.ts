@@ -1,4 +1,5 @@
 import { ISubreddit, IUser } from "..";
+import { IComment } from "./../comments/index";
 
 export interface IPost {
   _id: string;
@@ -7,7 +8,7 @@ export interface IPost {
   user: IUser;
   views: number;
   likes: number;
-  comments: number;
+  comments: IComment[];
   subreddit: ISubreddit;
   date: string;
 }

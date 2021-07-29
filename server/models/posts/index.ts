@@ -6,7 +6,6 @@ const postSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "user", required: true },
   views: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comment" }],
   subreddit: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "subreddit",

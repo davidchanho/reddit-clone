@@ -1,11 +1,11 @@
 import { gql } from "@apollo/client";
 
-// export const SubredditQuery = gql`
-//   query Query {
-//     subreddits {
-//       _id
-//       name
-//       icon
-//     }
-//   }
-// `;
+export const FETCH_SUBREDDITS = gql`
+  query Query {
+    subreddits {
+      _id
+      name
+      icon
+    }
+  }
+`;

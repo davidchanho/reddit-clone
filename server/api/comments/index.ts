@@ -6,25 +6,13 @@ export const commentsApi = {
     return Comment.findById(args._id);
   },
   addComment: async (parent: any, args: any, { Comment }: any) => {
-    try {
-      const newComment = new Comment(args.comment);
-      const comment = await newComment.save();
-      return comment;
-    } catch (error) {
-      throw new Error(error);
-    }
+    const comment = new Comment(args.comment);
+    return await comment.save();
   },
   removeComment: async (parent: any, args: any, { Comment }: any) => {
-    try {
-      const comment = await Comment.findById(args._id);
-      if (comment) {
-        await comment.delete();
-        return "Comment deleted!";
-      } else {
-        return "Comment does not exist";
-      }
-    } catch (error) {
-      throw new Error(error);
+    const comment = await Comment.findById(args._id);
+    if (comment) {
+      return await comment.delete();
     }
   },
   updateComment: async (parent: any, args: any, { Comment }: any) => {

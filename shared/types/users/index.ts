@@ -1,5 +1,5 @@
-import { ISubreddit } from './../subreddits/index';
-import { IPost, IComment } from "..";
+import { IComment, IPost } from "..";
+import { ISubreddit } from "./../subreddits/index";
 
 export interface IUser {
   _id: string;

@@ -6,25 +6,13 @@ export const subredditsApi = {
     return Subreddit.findById(args._id);
   },
   addSubreddit: async (parent: any, args: any, { Subreddit }: any) => {
-    try {
-      const newSubreddit = new Subreddit(args.subreddit);
-      const subreddit = await newSubreddit.save();
-      return subreddit;
-    } catch (error) {
-      throw new Error(error);
-    }
+    const subreddit = new Subreddit(args.subreddit);
+    return await subreddit.save();
   },
   removeSubreddit: async (parent: any, args: any, { Subreddit }: any) => {
-    try {
-      const subreddit = await Subreddit.findById(args._id);
-      if (subreddit) {
-        await subreddit.delete();
-        return "Subreddit deleted!";
-      } else {
-        return "Subreddit does not exist";
-      }
-    } catch (error) {
-      throw new Error(error);
+    const subreddit = await Subreddit.findById(args._id);
+    if (subreddit) {
+      return await subreddit.delete();
     }
   },
   updateSubreddit: async (parent: any, args: any, { Subreddit }: any) => {

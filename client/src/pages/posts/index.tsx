@@ -1,18 +1,21 @@
-import { useQuery } from "@apollo/client";
 import React from "react";
-import { IPost } from "../../../../shared/types";
-import Post from "../../components/posts/post";
-import { PostsQuery } from "../../queries";
+import PostsList from "../../components/posts-list";
+import Sidebar from "../../components/sidebar";
 
 function PostsPage() {
-  const { loading, error, data } = useQuery(PostsQuery);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
-
-  return data.posts.map((post: IPost) => {
-    return <Post key={post._id} {...post} />;
-  });
+  return (
+    <div className="flex flex-row w-full">
+      <div className="w-3/12">
+        <Sidebar />
+      </div>
+      <div className="flex flex-row w-9/12">
+        <div className="w-8/12">
+          <PostsList />
+        </div>
+        <aside className="w-4/12">asdas</aside>
+      </div>
+    </div>
+  );
 }
 
 export default PostsPage;

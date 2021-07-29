@@ -6,25 +6,13 @@ export const usersApi = {
     return User.findById(args._id);
   },
   addUser: async (parent: any, args: any, { User }: any) => {
-    try {
-      const newUser = new User(args.user);
-      const user = await newUser.save();
-      return user;
-    } catch (error) {
-      throw new Error(error);
-    }
+    const user = new User(args.user);
+    return await user.save();
   },
   removeUser: async (parent: any, args: any, { User }: any) => {
-    try {
-      const user = await User.findById(args._id);
-      if (user) {
-        await user.delete();
-        return "User deleted!";
-      } else {
-        return "User does not exist";
-      }
-    } catch (error) {
-      throw new Error(error);
+    const user = await User.findById(args._id);
+    if (user) {
+      return await user.delete();
     }
   },
   updateUser: async (parent: any, args: any, { User }: any) => {
@@ -47,78 +35,47 @@ export const usersApi = {
   },
   addFollower: async (parent: any, args: any, { User }: any) => {
     const follower = await User.findOne({ _id: args.followerId });
-    try {
-      if (follower) {
-        const user = await User.findOne({ _id: args.userId });
-        if (user) {
-          user.followers.push(follower);
-          user.save();
-        } else {
-          return "User does not exist";
-        }
-      } else {
-        return "Follower does not exist";
+
+    if (follower) {
+      const user = await User.findOne({ _id: args.userId });
+      if (user) {
+        user.followers.push(follower);
+        return user.save();
       }
-    } catch (error) {
-      throw new Error(error);
     }
   },
   addBookmark: async (parent: any, args: any, { Post, User }: any) => {
     const post = await Post.findOne({ _id: args.postId });
-    try {
-      if (post) {
-        const user = await User.findOne({ _id: args.userId });
-        if (user) {
-          user.bookmarks.push(post);
-          user.save();
-        } else {
-          return "User does not exist";
-        }
-      } else {
-        return "Post does not exist";
+    if (post) {
+      const user = await User.findOne({ _id: args.userId });
+      if (user) {
+        user.bookmarks.push(post);
+        return user.save();
       }
-    } catch (error) {
-      throw new Error(error);
     }
   },
   addSubreddit: async (parent: any, args: any, { Subreddit, User }: any) => {
     const subreddit = await Subreddit.findOne({ _id: args.subredditId });
-    try {
-      if (subreddit) {
-        const user = await User.findOne({ _id: args.userId });
-        if (user) {
-          user.subreddits.push(subreddit);
-          user.save();
-        } else {
-          return "User does not exist";
-        }
-      } else {
-        return "Subreddit does not exist";
+    if (subreddit) {
+      const user = await User.findOne({ _id: args.userId });
+      if (user) {
+        user.subreddits.push(subreddit);
+        return user.save();
       }
-    } catch (error) {
-      throw new Error(error);
     }
   },
   removeFollower: async (parent: any, args: any, { User }: any) => {
     const user = await User.findOne({ _id: args.userId });
-    try {
-      if (user) {
-        user.followers.pull({ _id: args.followerId });
-        user.save();
-      }
-    } catch (error) {
-      throw new Error(error);
+    if (user) {
+      user.followers.pull({ _id: args.followerId });
+      return user.save();
     }
   },
   removeBookmark: async (parent: any, args: any, { User }: any) => {
     const user = await User.findOne({ _id: args.userId });
-    try {
-      if (user) {
-        user.bookmarks.pull({ _id: args.postId });
-        user.save();
-      }
-    } catch (error) {
-      throw new Error(error);
+    if (user) {
+      user.bookmarks.pull({ _id: args.postId });
+      return user.save();
     }
   },
   removeSubredditFromUser: async (
@@ -127,14 +84,9 @@ export const usersApi = {
     { Subreddit, User }: any
   ) => {
     const user = await User.findOne({ _id: args.userId });
-    console.log("user", user);
-    try {
-      if (user) {
-        user.subreddits.pull({ _id: args.subredditId });
-        user.save();
-      }
-    } catch (error) {
-      throw new Error(error);
+    if (user) {
+      user.subreddits.pull({ _id: args.subredditId });
+      return user.save();
     }
   },
 };
