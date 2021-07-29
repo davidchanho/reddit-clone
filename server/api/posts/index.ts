@@ -12,7 +12,7 @@ export const postsApi = {
   removePost: async (parent: any, args: any, { Post }: any) => {
     const post = await Post.findById(args._id);
     if (post) {
-      return await post.delete();
+      return await post.remove();
     }
   },
   updatePost: async (parent: any, args: any, { Post }: any) => {
