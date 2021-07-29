@@ -11,6 +11,9 @@ export const FETCH_POSTS = gql`
       user {
         name
       }
+      subreddit {
+        name
+      }
     }
   }
 `;

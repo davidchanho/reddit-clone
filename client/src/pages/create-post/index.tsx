@@ -1,11 +1,12 @@
 import { useMutation, useQuery } from "@apollo/client";
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ISubreddit } from "../../../../shared/types";
 import { ADD_POST, FETCH_SUBREDDITS } from "../../queries";
 
 const initialForm = {
-  title: "asdf",
-  body: "asdfasdf",
+  title: "",
+  body: "",
   user: "610207571eb82f228f738fa1",
   subreddit: "610207251eb82f228f738f9f",
 };
@@ -14,12 +15,12 @@ function CreatePostPage() {
   const [form, setForm] = useState({ post: initialForm });
   const { loading, error, data } = useQuery(FETCH_SUBREDDITS);
   const [addPost] = useMutation(ADD_POST);
+  const navigate = useNavigate();
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setForm({
       post: {
         ...form.post,
@@ -30,10 +31,13 @@ function CreatePostPage() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(form);
     addPost({
       variables: form,
     });
+    setForm({
+      post: initialForm,
+    });
+    navigate("/");
   };
 
   if (loading) return <p>Loading...</p>;

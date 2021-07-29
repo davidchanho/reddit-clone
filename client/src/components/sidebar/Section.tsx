@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface Props {
   name: string;
   items: any[];
@@ -18,14 +20,16 @@ const Section = ({ name, items }: Props) => {
       <p className="uppercase mb-2">{name}</p>
 
       <ul>
-        {items.map((feed) => {
+        {items.map((item) => {
           return (
-            <li
-              className="mb-2 cursor-pointer hover:bg-gray-100"
-              key={feed.name}
-            >
-              {feed.name}
-            </li>
+            <Link to={isCommunity ? `/subreddit/${item._id}` : item.path}>
+              <li
+                className="mb-2 cursor-pointer hover:bg-gray-100"
+                key={item.name}
+              >
+                {item.name}
+              </li>
+            </Link>
           );
         })}
       </ul>
