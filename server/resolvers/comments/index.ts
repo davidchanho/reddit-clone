@@ -1,19 +1,25 @@
-import { commentsApi } from "../../api";
+import API from "../../api";
+
+const model = "Comment";
 
 const Query = {
-  comments: commentsApi.getComments,
-  comment: commentsApi.getComment,
+  comments: API.fetchMany(model),
+  comment: API.fetchOne(model),
 };
 
 const Comment = {
-  user: commentsApi.getUser,
-  post: commentsApi.getPost,
+  user: (parent: any, args: any, { User }: any) => {
+    return User.findById(parent.user);
+  },
+  post: (parent: any, args: any, { Post }: any) => {
+    return Post.findById(parent.post);
+  },
 };
 
 const Mutation = {
-  addComment: commentsApi.addComment,
-  removeComment: commentsApi.removeComment,
-  updateComment: commentsApi.updateComment,
+  addComment: API.addOne(model),
+  removeComment: API.removeOne(model),
+  updateComment: API.updateOne(model),
 };
 
 export const resolvers = {

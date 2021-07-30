@@ -26,14 +26,14 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(user: UserInput): User
+    addUser(item: UserInput): User
     removeUser(_id: ID!): User
-    updateUser(_id: ID!, user: UserInput): User
+    updateUser(_id: ID!, item: UserInput): User
 
     addFollower(followerId: ID!, userId: ID!): User
     addBookmark(postId: ID!, userId: ID!): Post
     addSubredditToUser(subredditId: ID!, userId: ID!): Subreddit
-    
+
     removeFollower(followerId: ID!, userId: ID!): User
     removeBookmark(postId: ID!, userId: ID!): Post
     removeSubredditFromUser(subredditId: ID!, userId: ID!): Subreddit

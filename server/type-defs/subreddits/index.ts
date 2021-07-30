@@ -19,8 +19,8 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    addSubreddit(subreddit: SubredditInput): Subreddit
+    addSubreddit(item: SubredditInput): Subreddit
     removeSubreddit(_id: ID!): Subreddit
-    updateSubreddit(_id: ID!, subreddit: SubredditInput): Subreddit
+    updateSubreddit(_id: ID!, item: SubredditInput): Subreddit
   }
 `;

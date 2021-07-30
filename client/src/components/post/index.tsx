@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IPost } from "../../../../shared/types";
 import { UPDATE_POST } from "../../queries";
+import Card from "../card";
 
 interface Props {
   post: IPost;
@@ -39,30 +40,35 @@ function Post({ post }: Props) {
   };
 
   return (
-    <article className="grid grid-cols-12">
-      <div className="col-span-1 mx-auto text-center bg-gray-100">
-        <ArrowUpIcon onClick={handleLike} className="h-6 cursor-pointer" />
-        <p>{likes}</p>
-        <ArrowDownIcon onClick={handleDisLike} className="h-6 cursor-pointer" />
+    <Card hover>
+      <div className="flex flex-row">
+        <div className="flex flex-col items-center justify-between bg-gray-100">
+          <ArrowUpIcon onClick={handleLike} className="h-6 cursor-pointer" />
+          <p>{likes}</p>
+          <ArrowDownIcon
+            onClick={handleDisLike}
+            className="h-6 cursor-pointer"
+          />
+        </div>
+
+        <div className="w-full p-3">
+          <Link to={`/posts/${_id}`}>
+            <header className="flex flex-row justify-between items-center">
+              <p>{subreddit.name}</p>
+              <p>{user.name}</p>
+              <p>{formatDate}</p>
+            </header>
+
+            <div>
+              <p>{title}</p>
+              <p>{body}</p>
+            </div>
+
+            <footer></footer>
+          </Link>
+        </div>
       </div>
-
-      <div className="col-span-11">
-        <Link to={`/posts/${_id}`}>
-          <header className="flex flex-row justify-between items-center">
-            <p>{subreddit.name}</p>
-            <p>{user.name}</p>
-            <p>{formatDate}</p>
-          </header>
-
-          <div>
-            <p>{title}</p>
-            <p>{body}</p>
-          </div>
-
-          <footer></footer>
-        </Link>
-      </div>
-    </article>
+    </Card>
   );
 }
 

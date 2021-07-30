@@ -22,8 +22,8 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    addComment(comment: CommentInput): Comment
+    addComment(item: CommentInput): Comment
     removeComment(_id: ID!): Comment
-    updateComment(_id: ID!, comment: CommentInput): Comment
+    updateComment(_id: ID!, item: CommentInput): Comment
   }
 `;

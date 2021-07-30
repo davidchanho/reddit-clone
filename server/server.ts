@@ -18,7 +18,7 @@ client();
   await server.start();
 
   const app = express();
-  server.applyMiddleware({ app });
+  server.applyMiddleware({ app, cors: true });
 
   await new Promise((resolve) => app.listen({ port: 4000 }, resolve as any));
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);

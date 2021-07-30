@@ -1,20 +1,28 @@
-import { postsApi } from "../../api";
+import API from "../../api";
+
+const model = "Post";
 
 const Query = {
-  posts: postsApi.getPosts,
-  post: postsApi.getPost,
+  posts: API.fetchMany(model),
+  post: API.fetchOne(model),
 };
 
 const Post = {
-  user: postsApi.getUser,
-  comments: postsApi.getComments,
-  subreddit: postsApi.getSubreddit,
+  user: (parent: any, args: any, { User }: any) => {
+    return User.findOne({ _id: parent.user });
+  },
+  comments: (parent: any, args: any, { Comment }: any) => {
+    return Comment.find({ post: parent._id });
+  },
+  subreddit: (parent: any, args: any, { Subreddit }: any) => {
+    return Subreddit.findOne({ _id: parent.subreddit });
+  },
 };
 
 const Mutation = {
-  addPost: postsApi.addPost,
-  removePost: postsApi.removePost,
-  updatePost: postsApi.updatePost,
+  addPost: API.addOne(model),
+  removePost: API.removeOne(model),
+  updatePost: API.updateOne(model),
 };
 
 export const resolvers = {

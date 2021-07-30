@@ -9,7 +9,7 @@ const Section = ({ name, items }: Props) => {
   const isCommunity = name === "my community";
 
   return (
-    <section className="px-4">
+    <section>
       {isCommunity && (
         <div className="mb-2">
           <p className="uppercase">{name}</p>

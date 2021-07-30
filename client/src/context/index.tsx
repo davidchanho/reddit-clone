@@ -18,6 +18,9 @@ interface IAppStateContext {
 
 type AppAction =
   | {
+      type: "TOGGLE_SIDEBAR";
+    }
+  | {
       type: "CLOSE_SIDEBAR";
     }
   | {
@@ -31,6 +34,9 @@ const AppState: IAppState = {
 const AppReducer = (state: IAppState = AppState, action: AppAction) =>
   produce(state, (draft: IAppState): IAppState | undefined => {
     switch (action.type) {
+      case "TOGGLE_SIDEBAR":
+        draft.isSidebarOpen = !draft.isSidebarOpen;
+        break;
       case "CLOSE_SIDEBAR":
         draft.isSidebarOpen = false;
         break;
