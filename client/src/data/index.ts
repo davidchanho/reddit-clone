@@ -1,3 +1,4 @@
+
 export const feeds = [
   {
     name: "Home",
@@ -7,17 +8,17 @@ export const feeds = [
   {
     name: "Popular",
     icon: "",
-    path: "/popular",
+    path: "#",
   },
   {
     name: "All",
     icon: "",
-    path: "/all",
+    path: "#",
   },
   {
     name: "Reddit Live",
     icon: "",
-    path: "/live",
+    path: "#",
   },
 ];
 
@@ -25,12 +26,12 @@ export const other = [
   {
     name: "User Settings",
     icon: "",
-    path: "/settings",
+    path: "#",
   },
   {
     name: "Messages",
     icon: "",
-    path: "/messages",
+    path: "#",
   },
   {
     name: "Create Post",

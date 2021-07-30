@@ -1,5 +1,6 @@
 import React from "react";
 import PostsList from "../../components/posts-list";
+import PostsSidebar from "../../components/posts-sidebar";
 import Sidebar from "../../components/sidebar";
 
 function PostsPage() {
@@ -12,7 +13,9 @@ function PostsPage() {
         <div className="w-full lg:w-8/12">
           <PostsList />
         </div>
-        <aside className="hidden lg:block w-4/12">asdas</aside>
+        <aside className="hidden lg:block w-4/12">
+          <PostsSidebar />
+        </aside>
       </div>
     </div>
   );

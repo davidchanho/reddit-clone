@@ -1,17 +1,10 @@
-import { useQuery } from "@apollo/client";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { IComment } from "../../../../shared/types";
-import { FETCH_POST } from "../../queries";
+import { useFetchPost } from "../../hooks";
 
 function PostPage() {
-  const params = useParams();
-
-  const { loading, error, data } = useQuery(FETCH_POST, {
-    variables: {
-      _id: params._id,
-    },
-  });
+  const { loading, error, data } = useFetchPost();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
@@ -20,7 +13,7 @@ function PostPage() {
     <div>
       <div>{data.post.title}</div>
       <div>
-        {data.post.comments.map((comment: IComment) => {
+        {data.post.comments?.map((comment: IComment) => {
           return <div key={comment._id}>{comment.body}</div>;
         })}
       </div>

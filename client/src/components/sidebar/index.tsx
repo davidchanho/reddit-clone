@@ -1,11 +1,10 @@
-import { useQuery } from "@apollo/client";
 import React from "react";
-import { feeds, other } from "../../data";
-import { FETCH_SUBREDDITS } from "../../queries/subreddits";
+import {feeds, other} from "../../data";
+import { useFetchSubreddits } from "../../hooks";
 import Section from "./Section";
 
 function Sidebar() {
-  const { loading, error, data } = useQuery(FETCH_SUBREDDITS);
+  const { loading, error, data } = useFetchSubreddits();
 
   if (loading) return null;
   if (error) return null;

@@ -1,18 +1,10 @@
-import { useQuery } from "@apollo/client";
 import React from "react";
-import { useParams } from "react-router";
 import { IPost } from "../../../../shared/types";
 import Post from "../../components/post";
-import { FETCH_SUBREDDIT } from "../../queries";
+import { useFetchSubreddit } from "../../hooks";
 
 function SubredditPage() {
-  const params = useParams();
-  
-  const { loading, error, data } = useQuery(FETCH_SUBREDDIT, {
-    variables: {
-      _id: params._id,
-    },
-  });
+  const { loading, error, data } = useFetchSubreddit();
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error...</div>;
@@ -20,7 +12,7 @@ function SubredditPage() {
   return (
     <div>
       {data.subreddit.posts.map((post: IPost) => {
-        return <Post key={post._id} {...post} />;
+        return <Post key={post._id} post={post} />;
       })}
     </div>
   );

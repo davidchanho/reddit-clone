@@ -1,18 +1,49 @@
+import { useMutation } from "@apollo/client";
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/outline";
 import dayjs from "dayjs";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IPost } from "../../../../shared/types";
+import { UPDATE_POST } from "../../queries";
 
-function Post({ _id, title, body, likes, subreddit, date, user }: IPost) {
+interface Props {
+  post: IPost;
+}
+
+function Post({ post }: Props) {
+  const [isLike, setIsLike] = useState(false);
+  const [likeState, setLikeState] = useState(post.likes);
+
+  const [updatePost] = useMutation(UPDATE_POST, {
+    variables: {
+      post,
+    },
+  });
+
+  const { _id, title, body, likes, subreddit, date, user } = post;
   const formatDate = dayjs(date).format("MMMM DD");
+
+  const handleLike = () => {
+    if (!isLike) {
+      setIsLike(true);
+      setLikeState(likeState + 1);
+      // updatePost({ post: { ...post, likes: likes + 1 } });
+    }
+  };
+
+  const handleDisLike = () => {
+    if (likes > 0 && isLike) {
+      setLikeState(likeState - 1);
+      // updatePost({ post: { ...post, likes: likes - 1 } });
+    }
+  };
 
   return (
     <article className="grid grid-cols-12">
       <div className="col-span-1 mx-auto text-center bg-gray-100">
-        <ArrowUpIcon className="h-6 cursor-pointer" />
+        <ArrowUpIcon onClick={handleLike} className="h-6 cursor-pointer" />
         <p>{likes}</p>
-        <ArrowDownIcon className="h-6 cursor-pointer" />
+        <ArrowDownIcon onClick={handleDisLike} className="h-6 cursor-pointer" />
       </div>
 
       <div className="col-span-11">

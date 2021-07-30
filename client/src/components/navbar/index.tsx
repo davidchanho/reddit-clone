@@ -2,7 +2,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <header>
+    <header className="h-1/5 flex flex-row">
       <p>reddit</p>
       <div>Home</div>
       <input />

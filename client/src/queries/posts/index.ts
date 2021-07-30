@@ -44,3 +44,12 @@ export const REMOVE_POST = gql`
     }
   }
 `;
+
+export const UPDATE_POST = gql`
+  mutation Mutation($post: PostInput) {
+    updatePost(post: $post) {
+      _id
+      likes
+    }
+  }
+`;
