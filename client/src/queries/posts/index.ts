@@ -30,8 +30,8 @@ export const FETCH_POST = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation Mutation($post: PostInput) {
-    addPost(post: $post) {
+  mutation Mutation($item: PostInput) {
+    addPost(item: $item) {
       title
     }
   }
@@ -46,8 +46,8 @@ export const REMOVE_POST = gql`
 `;
 
 export const UPDATE_POST = gql`
-  mutation Mutation($post: PostInput) {
-    updatePost(post: $post) {
+  mutation Mutation($item: PostInput) {
+    updatePost(item: $item) {
       _id
       likes
     }

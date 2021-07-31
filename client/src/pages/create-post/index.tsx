@@ -12,7 +12,7 @@ const initialForm = {
 };
 
 function CreatePostPage() {
-  const [form, setForm] = useState({ post: initialForm });
+  const [form, setForm] = useState({ item: initialForm });
   const { loading, error, data } = useQuery(FETCH_SUBREDDITS);
   const [addPost] = useMutation(ADD_POST);
   const navigate = useNavigate();
@@ -22,8 +22,8 @@ function CreatePostPage() {
   ) => {
     const { name, value } = e.target;
     setForm({
-      post: {
-        ...form.post,
+      item: {
+        ...form.item,
         [name]: value,
       },
     });
@@ -35,7 +35,7 @@ function CreatePostPage() {
       variables: form,
     });
     setForm({
-      post: initialForm,
+      item: initialForm,
     });
     navigate("/");
   };
@@ -44,9 +44,9 @@ function CreatePostPage() {
   if (error) return <p>error...</p>;
 
   return (
-    <form className="flex flex-col w-6/12 mx-auto" onSubmit={handleSubmit}>
+    <form className="flex flex-col w-full mx-auto" onSubmit={handleSubmit}>
       <select
-        value={form.post.subreddit}
+        value={form.item.subreddit}
         name="subreddit"
         onChange={handleChange}
       >
@@ -60,7 +60,7 @@ function CreatePostPage() {
       <input
         onChange={handleChange}
         type="text"
-        value={form.post.title}
+        value={form.item.title}
         name="title"
         placeholder="title"
       />
@@ -68,7 +68,7 @@ function CreatePostPage() {
       <input
         onChange={handleChange}
         type="text"
-        value={form.post.body}
+        value={form.item.body}
         name="body"
         placeholder="body"
       />
