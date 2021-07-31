@@ -4,7 +4,9 @@ const model = "Post";
 
 const Query = {
   posts: API.fetchMany(model),
-  post: API.fetchOne(model),
+  post: (parent: any, args: any, context: any) => {
+    return context[model].findOne({ title: args.title });
+  },
 };
 
 const Post = {

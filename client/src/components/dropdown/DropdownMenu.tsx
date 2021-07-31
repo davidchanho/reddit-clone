@@ -19,7 +19,7 @@ function DropdownMenu({ children, open }: PropsWithChildren<Props>) {
     >
       <Menu.Items
         static
-        className="w-full origin-top-right absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+        className="w-full origin-top-right absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
       >
         <div className="py-1">{children}</div>
       </Menu.Items>

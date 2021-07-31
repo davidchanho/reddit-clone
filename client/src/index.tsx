@@ -6,9 +6,11 @@ import { AppStateProvider } from "./context";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
+const cache = new InMemoryCache();
+
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
-  cache: new InMemoryCache(),
+  cache,
 });
 
 ReactDOM.render(

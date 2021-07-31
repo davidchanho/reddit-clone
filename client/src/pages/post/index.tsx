@@ -9,7 +9,7 @@ function PostPage() {
 
   const { loading, error, data } = useQuery(FETCH_POST, {
     variables: {
-      _id: params._id,
+      title: params.title,
     },
   });
 

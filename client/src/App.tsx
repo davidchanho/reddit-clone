@@ -12,9 +12,9 @@ function App() {
       <Routes>
         <Route element={<Template />}>
           <Route path="/" element={<PostsPage />} />
-          <Route path="/posts/:_id" element={<PostPage />} />
           <Route path="/create" element={<CreatePostPage />} />
-          <Route path="/subreddit/:_id" element={<SubredditPage />} />
+          <Route path="/r/:name" element={<SubredditPage />} />
+          <Route path="/r/:name/:title" element={<PostPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

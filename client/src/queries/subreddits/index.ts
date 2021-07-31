@@ -11,8 +11,8 @@ export const FETCH_SUBREDDITS = gql`
 `;
 
 export const FETCH_SUBREDDIT = gql`
-  query Query($_id: ID!) {
-    subreddit(_id: $_id) {
+  query Query($name: String!) {
+    subreddit(name: $name) {
       posts {
         _id
         title

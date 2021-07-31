@@ -3,7 +3,7 @@ import { gql } from "apollo-server-express";
 export const typeDefs = gql`
   extend type Query {
     subreddits: [Subreddit]
-    subreddit(_id: ID!): Subreddit
+    subreddit(name: String!): Subreddit
   }
 
   type Subreddit {
@@ -11,6 +11,7 @@ export const typeDefs = gql`
     name: String!
     icon: String!
     posts: [Post]
+    post(_id: ID!): Post
   }
 
   input SubredditInput {

@@ -11,7 +11,7 @@ function SubredditPage() {
 
   const { loading, error, data } = useQuery(FETCH_SUBREDDIT, {
     variables: {
-      _id: params._id,
+      name: params.name,
     },
   });
 

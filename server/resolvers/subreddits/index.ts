@@ -4,12 +4,17 @@ const model = "Subreddit";
 
 const Query = {
   subreddits: API.fetchMany(model),
-  subreddit: API.fetchOne(model),
+  subreddit: (parent: any, args: any, { Subreddit }: any) => {
+    return Subreddit.findOne({ name: args.name });
+  },
 };
 
 const Subreddit = {
   posts: (parent: any, args: any, { Post }: any) => {
     return Post.find({ subreddit: parent._id });
+  },
+  post: (parent: any, args: any, { Post }: any) => {
+    return Post.findById(args._id);
   },
 };
 

@@ -19,8 +19,8 @@ export const FETCH_POSTS = gql`
 `;
 
 export const FETCH_POST = gql`
-  query Query($_id: ID!) {
-    post(_id: $_id) {
+  query Query($title: String) {
+    post(title: $title) {
       title
       comments {
         body

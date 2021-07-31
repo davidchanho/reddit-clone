@@ -7,7 +7,7 @@ interface Props {
 const Card = ({ children, hover = false }: PropsWithChildren<Props>) => {
   return (
     <div
-      className={`bg-white p-0 rounded-lg border ${
+      className={`bg-white p-0 rounded border ${
         hover ? "hover:border-gray-400" : ""
       }`}
     >

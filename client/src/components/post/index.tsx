@@ -10,11 +10,10 @@ import Card from "../card";
 interface Props {
   post: IPost;
 }
-
 function Post({ post }: Props) {
   const [isLike, setIsLike] = useState(false);
   const [likeState, setLikeState] = useState(post.likes);
-
+  
   const [updatePost] = useMutation(UPDATE_POST, {
     variables: {
       post,
@@ -52,7 +51,7 @@ function Post({ post }: Props) {
         </div>
 
         <div className="w-full p-3">
-          <Link to={`/posts/${_id}`}>
+          <Link to={`/r/${subreddit.name}/${title}`} state={{ _id }}>
             <header className="flex flex-row justify-between items-center">
               <p>{subreddit.name}</p>
               <p>{user.name}</p>
@@ -73,3 +72,6 @@ function Post({ post }: Props) {
 }
 
 export default Post;
+function useHistory<T>() {
+  throw new Error("Function not implemented.");
+}
