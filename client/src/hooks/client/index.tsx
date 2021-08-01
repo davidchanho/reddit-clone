@@ -1,10 +1,11 @@
 import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 import { InMemoryCache } from "@apollo/client/core";
 import { offsetLimitPagination } from "@apollo/client/utilities";
-import { CachePersistor, LocalStorageWrapper } from "apollo3-cache-persist";
+import { CachePersistor, LocalForageWrapper } from "apollo3-cache-persist";
 import _ from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
 import { daysAgo } from "../../helpers";
+import localforage from "localforage";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -39,7 +40,7 @@ const cache = new InMemoryCache({
   },
 });
 
-const storage: any = new LocalStorageWrapper(window.localStorage);
+const storage: any = new LocalForageWrapper(localforage);
 
 let newPersistor = new CachePersistor({
   cache,
