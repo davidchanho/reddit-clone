@@ -1,3 +1,4 @@
+import { ChatAltIcon } from "@heroicons/react/outline";
 import React from "react";
 import { Link } from "react-router-dom";
 import { IPost } from "../../../../shared/types";
@@ -14,22 +15,24 @@ function Post({ post }: Props) {
       <div className="flex flex-row">
         <Likes post={post} />
 
-        <div className="w-full p-3">
-          <Link to={`/r/${post.subreddit.name}/${post._id}`}>
-            <header className="flex flex-row justify-between items-center">
-              <p>{post.subreddit.name}</p>
-              <p>{post.user.name}</p>
+        <Link to={`/r/${post.subreddit.name}/${post._id}`}>
+          <div className="w-full p-3">
+            <header className="flex flex-row gap-2 items-center">
+              <p className="font-bold">r/{post.subreddit.name}</p>
+              <p>Posted by u/{post.user.name}</p>
               <p>{post.date}</p>
             </header>
 
             <div>
-              <p>{post.title}</p>
+              <p className="font-bold capitalize text-lg">{post.title}</p>
               <p>{post.body}</p>
             </div>
 
-            <footer></footer>
-          </Link>
-        </div>
+            <footer>
+              <ChatAltIcon /> {post?.comments?.length}
+            </footer>
+          </div>
+        </Link>
       </div>
     </Card>
   );

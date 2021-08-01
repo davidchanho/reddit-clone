@@ -1,10 +1,10 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { offsetLimitPagination } from "@apollo/client/utilities";
-import dayjs from "dayjs";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { AppStateProvider } from "./context";
+import { daysAgo } from "./helpers";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
@@ -19,7 +19,7 @@ const cache = new InMemoryCache({
       fields: {
         date: {
           read(date, options) {
-            return dayjs(date).format("MMMM DD YYYY");
+            return daysAgo(date);
           },
         },
       },
