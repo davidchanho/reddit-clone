@@ -46,28 +46,9 @@ export const REMOVE_POST = gql`
 `;
 
 export const UPDATE_POST = gql`
-  mutation Mutation($item: PostInput) {
-    updatePost(item: $item) {
+  mutation Mutation($_id: ID!, $update: String) {
+    updatePost(_id: $_id, update: $update) {
       _id
-      likes
-    }
-  }
-`;
-
-export const LIKE_POST = gql`
-  mutation Mutation($_id: ID!) {
-    likePost(_id: $_id) {
-      _id
-      likes
-    }
-  }
-`;
-
-export const DISLIKE_POST = gql`
-  mutation Mutation($_id: ID!) {
-    dislikePost(_id: $_id) {
-      _id
-      likes
     }
   }
 `;

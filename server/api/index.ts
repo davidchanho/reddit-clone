@@ -25,7 +25,11 @@ const removeOne = (db: any) => {
 
 const updateOne = (db: any) => {
   return async (parent: any, args: any, context: any) => {
-    return await context[db].findOneAndUpdate({ _id: args._id }, args.item);
+    console.log(args.update);
+    return await context[db].findOneAndUpdate(
+      { _id: args._id },
+      JSON.parse(args.update)
+    );
   };
 };
 

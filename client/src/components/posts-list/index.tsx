@@ -12,7 +12,7 @@ interface Props {
 }
 
 function PostsList({ data, onLoadMore }: Props) {
-  const { ref, inView, entry } = useInView({
+  const { ref, inView } = useInView({
     threshold: 1,
   });
 

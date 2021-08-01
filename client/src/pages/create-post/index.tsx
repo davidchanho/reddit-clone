@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ISubreddit } from "../../../../shared/types";
-import { ADD_POST, FETCH_POSTS, FETCH_SUBREDDITS } from "../../queries";
+import { ADD_POST, FETCH_SUBREDDITS } from "../../queries";
 
 const initialForm = {
   title: "",

@@ -2,7 +2,7 @@ import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
   extend type Query {
-    posts: [Post]
+    posts(offset: Int, limit: Int): [Post]
     post(_id: ID!): Post
   }
 
@@ -28,8 +28,6 @@ export const typeDefs = gql`
   type Mutation {
     addPost(item: PostInput): Post
     removePost(_id: ID!): Post
-    updatePost(_id: ID!, item: PostInput): Post
-    likePost(_id: ID!): Post
-    dislikePost(_id: ID!): Post
+    updatePost(_id: ID!, update: String): Post
   }
 `;

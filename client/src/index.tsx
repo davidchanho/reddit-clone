@@ -1,4 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { offsetLimitPagination } from "@apollo/client/utilities";
 import dayjs from "dayjs";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -6,7 +7,6 @@ import App from "./App";
 import { AppStateProvider } from "./context";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-import { offsetLimitPagination } from "@apollo/client/utilities";
 
 const cache = new InMemoryCache({
   typePolicies: {

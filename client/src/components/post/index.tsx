@@ -36,6 +36,3 @@ function Post({ post }: Props) {
 }
 
 export default Post;
-function useHistory<T>() {
-  throw new Error("Function not implemented.");
-}
