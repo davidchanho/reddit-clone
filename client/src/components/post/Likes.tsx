@@ -34,14 +34,16 @@ function Likes({ post }: Props) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between bg-gray-100">
-      <button onClick={() => handleLike("like", like + 1)}>
-        <ArrowUpIcon className={`h-6 cursor-pointer `} />
-      </button>
-      <p>{like}</p>
-      <button onClick={() => handleLike("dislike", like - 1)}>
-        <ArrowDownIcon className={`h-6 cursor-pointer `} />
-      </button>
+    <div className="bg-gray-100">
+      <div className="h-1/5 flex flex-col items-center justify-between gap-3 p-2">
+        <button onClick={() => handleLike("like", like + 1)}>
+          <ArrowUpIcon className="h-6 cursor-pointer hover:text-red-500" />
+        </button>
+        <p>{like}</p>
+        <button onClick={() => handleLike("dislike", like - 1)}>
+          <ArrowDownIcon className="h-6 cursor-pointer hover:text-blue-500" />
+        </button>
+      </div>
     </div>
   );
 }
