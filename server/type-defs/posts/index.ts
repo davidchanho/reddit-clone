@@ -3,7 +3,7 @@ import { gql } from "apollo-server-express";
 export const typeDefs = gql`
   extend type Query {
     posts: [Post]
-    post(title: String!): Post
+    post(_id: ID!): Post
   }
 
   type Post {
@@ -29,5 +29,7 @@ export const typeDefs = gql`
     addPost(item: PostInput): Post
     removePost(_id: ID!): Post
     updatePost(_id: ID!, item: PostInput): Post
+    likePost(_id: ID!): Post
+    dislikePost(_id: ID!): Post
   }
 `;

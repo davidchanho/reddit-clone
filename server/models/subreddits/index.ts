@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const subredditSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true, unique: true },
   icon: { type: String, required: true },
 });
 

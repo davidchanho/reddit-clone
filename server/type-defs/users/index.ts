@@ -37,5 +37,8 @@ export const typeDefs = gql`
     removeFollower(followerId: ID!, userId: ID!): User
     removeBookmark(postId: ID!, userId: ID!): Post
     removeSubredditFromUser(subredditId: ID!, userId: ID!): Subreddit
+
+    addKarma(_id: ID!): User
+    decreaseKarma(_id: ID!): User
   }
 `;

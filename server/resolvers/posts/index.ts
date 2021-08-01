@@ -4,9 +4,7 @@ const model = "Post";
 
 const Query = {
   posts: API.fetchMany(model),
-  post: (parent: any, args: any, context: any) => {
-    return context[model].findOne({ title: args.title });
-  },
+  post: API.fetchOne(model),
 };
 
 const Post = {
@@ -25,6 +23,22 @@ const Mutation = {
   addPost: API.addOne(model),
   removePost: API.removeOne(model),
   updatePost: API.updateOne(model),
+  likePost: async (parent: any, args: any, context: any) => {
+    const post = await context[model].findById(args._id);
+    if (post) {
+      post.likes = post.likes + 1;
+      await post.save();
+    }
+  },
+  dislikePost: async (parent: any, args: any, context: any) => {
+    const post = await context[model].findById(args._id);
+    if (post) {
+      if (post.likes > 1) {
+        post.likes = post.likes - 1;
+        await post.save();
+      }
+    }
+  },
 };
 
 export const resolvers = {

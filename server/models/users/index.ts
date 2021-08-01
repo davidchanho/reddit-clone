@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   subreddits: [{ type: Schema.Types.ObjectId, ref: "subreddit" }],
   bookmarks: [{ type: Schema.Types.ObjectId, ref: "post" }],
   date: { type: String, default: new Date().toString() },
+  karma: { type: Number },
 });
 
 const Post = mongoose.model("user", userSchema);

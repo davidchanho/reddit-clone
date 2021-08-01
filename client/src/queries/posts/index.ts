@@ -19,8 +19,8 @@ export const FETCH_POSTS = gql`
 `;
 
 export const FETCH_POST = gql`
-  query Query($title: String) {
-    post(title: $title) {
+  query Query($_id: ID!) {
+    post(_id: $_id) {
       title
       comments {
         body
@@ -48,6 +48,24 @@ export const REMOVE_POST = gql`
 export const UPDATE_POST = gql`
   mutation Mutation($item: PostInput) {
     updatePost(item: $item) {
+      _id
+      likes
+    }
+  }
+`;
+
+export const LIKE_POST = gql`
+  mutation Mutation($_id: ID!) {
+    likePost(_id: $_id) {
+      _id
+      likes
+    }
+  }
+`;
+
+export const DISLIKE_POST = gql`
+  mutation Mutation($_id: ID!) {
+    dislikePost(_id: $_id) {
       _id
       likes
     }

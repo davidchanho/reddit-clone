@@ -67,7 +67,6 @@ const Mutation = {
       }
     }
   },
-
   removeFollower: async (parent: any, args: any, { User }: any) => {
     const user = await User.findOne({ _id: args.userId });
 
@@ -93,6 +92,22 @@ const Mutation = {
 
     if (user) {
       user.subreddits.pull({ _id: args.subredditId });
+      return user.save();
+    }
+  },
+  addKarma: async (parent: any, args: any, { User }: any) => {
+    const user = await User.findOne({ _id: args._id });
+
+    if (user) {
+      user.karma = user.karma + 1;
+      return user.save();
+    }
+  },
+  decreaseKarma: async (parent: any, args: any, { User }: any) => {
+    const user = await User.findOne({ _id: args._id });
+
+    if (user) {
+      user.karma = user.karma - 1;
       return user.save();
     }
   },

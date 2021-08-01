@@ -1,4 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import dayjs from "dayjs";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -6,9 +7,21 @@ import { AppStateProvider } from "./context";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
-const cache = new InMemoryCache();
+const cache = new InMemoryCache({
+  typePolicies: {
+    Post: {
+      fields: {
+        date: {
+          read(date, options) {
+            return dayjs(date).format("MMMM DD YYYY");
+          },
+        },
+      },
+    },
+  },
+});
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
   cache,
 });

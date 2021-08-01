@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ISubreddit } from "../../../../shared/types";
-import { ADD_POST, FETCH_SUBREDDITS } from "../../queries";
+import { ADD_POST, FETCH_POSTS, FETCH_SUBREDDITS } from "../../queries";
 
 const initialForm = {
   title: "",
@@ -14,7 +14,9 @@ const initialForm = {
 function CreatePostPage() {
   const [form, setForm] = useState({ item: initialForm });
   const { loading, error, data } = useQuery(FETCH_SUBREDDITS);
-  const [addPost] = useMutation(ADD_POST);
+  const [addPost] = useMutation(ADD_POST, {
+    refetchQueries: ["FETCH_POSTS"],
+  });
   const navigate = useNavigate();
 
   const handleChange = (
