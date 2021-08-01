@@ -1,7 +1,6 @@
 import { Menu } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import React from "react";
-import { useAppContext } from "../../context";
 import Dropdown from "../dropdown";
 import DropdownButton from "../dropdown/DropdownButton";
 import DropdownMenu from "../dropdown/DropdownMenu";
@@ -11,12 +10,6 @@ interface Props {
 }
 
 function Nav() {
-  const { dispatch } = useAppContext();
-
-  const handleToggle = () => {
-    dispatch({ type: "TOGGLE_SIDEBAR" });
-  };
-
   return (
     <Dropdown>
       {({ open }: Props) => (

@@ -39,7 +39,7 @@ function Likes({ post }: Props) {
         <button onClick={() => handleLike("like", like + 1)}>
           <ArrowUpIcon className="h-6 cursor-pointer hover:text-red-500" />
         </button>
-        <p>{like}</p>
+        <p>{like === 0 ? "Vote" : like}</p>
         <button onClick={() => handleLike("dislike", like - 1)}>
           <ArrowDownIcon className="h-6 cursor-pointer hover:text-blue-500" />
         </button>

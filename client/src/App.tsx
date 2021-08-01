@@ -1,23 +1,19 @@
+import { ApolloProvider } from "@apollo/client";
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CreatePostPage from "./pages/create-post";
-import PostPage from "./pages/post";
-import PostsPage from "./pages/posts";
-import SubredditPage from "./pages/subreddit";
-import Template from "./pages/template";
+import Routing from "./components/routing";
+import useClient from "./hooks/client";
 
 function App() {
+  const { client } = useClient();
+
+  if (!client) {
+    return <h2>Initializing app...</h2>;
+  }
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Template />}>
-          <Route path="/" element={<PostsPage />} />
-          <Route path="/r/:name" element={<SubredditPage />} />
-          <Route path="/r/:name/:_id" element={<PostPage />} />
-        </Route>
-        <Route path="/create" element={<CreatePostPage />} />
-      </Routes>
-    </BrowserRouter>
+    <ApolloProvider client={client}>
+      <Routing />
+    </ApolloProvider>
   );
 }
 
