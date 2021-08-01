@@ -20,9 +20,7 @@ function PostPage() {
     <div>
       <div>{data.post.title}</div>
       <div>
-        {data.post?.comments?.map((comment: IComment) => {
-          return <div key={comment._id}>{comment.body}</div>;
-        })}
+       
       </div>
     </div>
   );

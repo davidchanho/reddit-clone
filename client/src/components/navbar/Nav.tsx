@@ -23,7 +23,6 @@ function Nav() {
         <>
           <DropdownButton>
             Home
-            <button onClick={handleToggle}>Open</button>
             <ChevronDownIcon
               className="-mr-1 ml-2 h-5 w-5"
               aria-hidden="true"

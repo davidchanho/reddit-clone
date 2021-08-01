@@ -25,7 +25,7 @@ function SubredditPage() {
         onLoadMore={() =>
           fetchMore({
             variables: {
-              offset: data.posts.length,
+              offset: data.subreddit.posts.length,
             },
           })
         }

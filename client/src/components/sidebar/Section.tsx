@@ -22,14 +22,14 @@ const Section = ({ name, items }: Props) => {
       <ul>
         {items.map((item) => {
           return (
-            <Link to={isCommunity ? `/r/${item.name}` : item.path}>
-              <li
-                className="mb-2 cursor-pointer hover:bg-gray-100"
-                key={item.name}
-              >
+            <li
+              className="mb-2 cursor-pointer hover:bg-gray-100"
+              key={item.name}
+            >
+              <Link to={isCommunity ? `/r/${item.name}` : item.path}>
                 {item.name}
-              </li>
-            </Link>
+              </Link>
+            </li>
           );
         })}
       </ul>
