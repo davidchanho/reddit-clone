@@ -8,8 +8,7 @@ import { FETCH_SUBREDDIT } from "../../queries";
 
 function SubredditPage() {
   const params = useParams();
-
-  const { loading, error, data } = useQuery(FETCH_SUBREDDIT, {
+  const { loading, error, data, fetchMore } = useQuery(FETCH_SUBREDDIT, {
     variables: {
       name: params.name,
     },
@@ -21,7 +20,16 @@ function SubredditPage() {
   return (
     <>
       <Sidebar />
-      <PostsList data={data.subreddit.posts} />
+      <PostsList
+        data={data.subreddit.posts}
+        onLoadMore={() =>
+          fetchMore({
+            variables: {
+              offset: data.posts.length,
+            },
+          })
+        }
+      />
       <PostsSidebar />
     </>
   );

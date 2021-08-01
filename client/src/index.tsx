@@ -6,9 +6,15 @@ import App from "./App";
 import { AppStateProvider } from "./context";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
+import { offsetLimitPagination } from "@apollo/client/utilities";
 
 const cache = new InMemoryCache({
   typePolicies: {
+    Query: {
+      fields: {
+        posts: offsetLimitPagination(),
+      },
+    },
     Post: {
       fields: {
         date: {

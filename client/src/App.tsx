@@ -15,8 +15,8 @@ function App() {
           <Route path="/r/:name" element={<SubredditPage />} />
           <Route path="/r/:name/:_id" element={<PostPage />} />
         </Route>
+        <Route path="/create" element={<CreatePostPage />} />
       </Routes>
-      <Route path="/create" element={<CreatePostPage />} />
     </BrowserRouter>
   );
 }

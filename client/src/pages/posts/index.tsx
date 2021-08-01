@@ -6,7 +6,12 @@ import Sidebar from "../../components/sidebar";
 import { FETCH_POSTS } from "../../queries";
 
 function PostsPage() {
-  const { loading, error, data } = useQuery(FETCH_POSTS);
+  const { loading, error, data, fetchMore } = useQuery(FETCH_POSTS, {
+    variables: {
+      offset: 0,
+      limit: 5,
+    },
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
@@ -14,7 +19,16 @@ function PostsPage() {
   return (
     <>
       <Sidebar />
-      <PostsList data={data.posts} />
+      <PostsList
+        data={data.posts || []}
+        onLoadMore={() =>
+          fetchMore({
+            variables: {
+              offset: data.posts.length,
+            },
+          })
+        }
+      />
       <PostsSidebar />
     </>
   );
