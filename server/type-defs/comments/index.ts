@@ -8,8 +8,6 @@ export const typeDefs = gql`
 
   type Comment {
     _id: ID!
-    post: Post!
-    user: User!
     body: String!
     likes: Int
     date: String!
@@ -25,5 +23,13 @@ export const typeDefs = gql`
     addComment(item: CommentInput): Comment
     removeComment(_id: ID!): Comment
     updateComment(_id: ID!, item: CommentInput): Comment
+  }
+
+  extend type User {
+    comments: [Comment]
+  }
+
+  extend type Post {
+    comments: [Comment]
   }
 `;

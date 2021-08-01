@@ -12,11 +12,7 @@ export const typeDefs = gql`
     email: String!
     avatar: String!
     followers: [User]
-    subreddits: [Subreddit]
-    bookmarks: [Post]
     date: String!
-    posts: [Post]
-    comments: [Comment]
   }
 
   input UserInput {
@@ -40,5 +36,13 @@ export const typeDefs = gql`
 
     addKarma(_id: ID!): User
     decreaseKarma(_id: ID!): User
+  }
+
+  extend type Post {
+    user: User!
+  }
+
+  extend type Comment {
+    user: User!
   }
 `;

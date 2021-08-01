@@ -10,8 +10,6 @@ export const typeDefs = gql`
     _id: ID!
     name: String!
     icon: String!
-    posts: [Post]
-    post(_id: ID!): Post
   }
 
   input SubredditInput {
@@ -23,5 +21,13 @@ export const typeDefs = gql`
     addSubreddit(item: SubredditInput): Subreddit
     removeSubreddit(_id: ID!): Subreddit
     updateSubreddit(_id: ID!, item: SubredditInput): Subreddit
+  }
+
+  extend type User {
+    subreddits: [Subreddit]
+  }
+
+  extend type Post {
+    subreddit: Subreddit
   }
 `;
