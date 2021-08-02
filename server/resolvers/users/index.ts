@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import API from "../../api";
 
 const model = "User";
@@ -26,11 +27,22 @@ const User = {
 };
 
 const Mutation = {
+  login: async (parent: any, args: any, { User }: any) => {
+    const user = await User.find({ email: args.email });
+
+    if (user) {
+      const token = jwt.sign({ _id: user._id }, "secret", {
+        algorithm: "HS256",
+      });
+
+      return token;
+    }
+  },
   addUser: API.addOne(model),
   removeUser: API.removeOne(model),
   updateUser: API.updateOne(model),
 
-  addFollower: async (parent: any, args: any, { User }: any) => {
+  addFollower: async (parent: any, args: any, { db: { User } }: any) => {
     const follower = await User.findOne({ _id: args.followerId });
 
     if (follower) {
