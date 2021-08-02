@@ -1,11 +1,31 @@
-import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
+import {
+  ApolloClient,
+  createHttpLink,
+  NormalizedCacheObject,
+} from "@apollo/client";
 import { InMemoryCache } from "@apollo/client/core";
+import { setContext } from "@apollo/client/link/context";
 import { offsetLimitPagination } from "@apollo/client/utilities";
 import { CachePersistor, LocalForageWrapper } from "apollo3-cache-persist";
 import localforage from "localforage";
 import _ from "lodash";
 import { useCallback, useEffect, useState } from "react";
 import { daysAgo } from "../../helpers";
+
+const httpLink = createHttpLink({
+  uri: "http://localhost:4000/graphql",
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("token");
+  
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -78,15 +98,7 @@ function useClient() {
     init().catch(console.error);
   }, []);
 
-  const clearCache = useCallback(() => {
-    if (!persistor) {
-      return;
-    }
-    persistor.purge();
-    window.location.reload();
-  }, [persistor]);
-
-  return { client, clearCache };
+  return { client };
 }
 
 export default useClient;

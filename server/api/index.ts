@@ -11,7 +11,6 @@ const addOne = (db: any) => {
   return async (parent: any, args: any, context: any) => {
     try {
       const item = new context[db](args.item);
-      console.log('item added');
       return await item.save();
     } catch (err) {
       console.log(err);

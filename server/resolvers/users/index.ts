@@ -107,22 +107,6 @@ const Mutation = {
       return user.save();
     }
   },
-  addKarma: async (parent: any, args: any, { User }: any) => {
-    const user = await User.findOne({ _id: args._id });
-
-    if (user) {
-      user.karma = user.karma + 1;
-      return user.save();
-    }
-  },
-  decreaseKarma: async (parent: any, args: any, { User }: any) => {
-    const user = await User.findOne({ _id: args._id });
-
-    if (user) {
-      user.karma = user.karma - 1;
-      return user.save();
-    }
-  },
 };
 
 export const resolvers = {

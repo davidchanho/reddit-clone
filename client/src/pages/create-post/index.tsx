@@ -2,7 +2,6 @@ import { useMutation, useQuery } from "@apollo/client";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ISubreddit } from "../../../../shared/types";
-import useClient from "../../hooks/client";
 import { ADD_POST, FETCH_SUBREDDITS } from "../../queries";
 
 const initialForm = {
@@ -17,12 +16,11 @@ function CreatePostPage() {
 
   const { loading, error, data } = useQuery(FETCH_SUBREDDITS);
 
-  const [addPost] = useMutation(ADD_POST, {
+  const [addPost, { client }] = useMutation(ADD_POST, {
     refetchQueries: ["FETCH_POSTS"],
     variables: { item: form },
   });
   const navigate = useNavigate();
-  const { clearCache } = useClient();
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -39,7 +37,7 @@ function CreatePostPage() {
     addPost();
     setForm(initialForm);
     navigate("/");
-    clearCache();
+    client.resetStore();
   };
 
   if (loading) return <p>Loading...</p>;
@@ -47,11 +45,7 @@ function CreatePostPage() {
 
   return (
     <form className="flex flex-col w-full mx-auto" onSubmit={handleSubmit}>
-      <select
-        value={form.subreddit}
-        name="subreddit"
-        onChange={handleChange}
-      >
+      <select value={form.subreddit} name="subreddit" onChange={handleChange}>
         {data.subreddits.map((subreddit: ISubreddit) => (
           <option key={subreddit._id} value={subreddit._id}>
             {subreddit.name}

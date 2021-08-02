@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_DASHBOARD = gql`
-  query Query {
+  query fetchDashboard {
     posts {
       _id
       title

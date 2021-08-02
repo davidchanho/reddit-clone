@@ -15,6 +15,8 @@ function Routing() {
       <Routes>
         <Route element={<Template />}>
           <Route path="/" element={<PostsPage />} />
+          <Route path="/r/all" element={<PostsPage />} />
+          <Route path="/r/popular" element={<PostsPage />} />
           <Route path="/r/:name" element={<SubredditPage />} />
           <Route path="/r/:name/:_id" element={<PostPage />} />
         </Route>

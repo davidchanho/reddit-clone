@@ -43,7 +43,6 @@ const cache = new BaseRedisCache({
   });
 
   await server.start();
-  
   const corsOptions = {
     origin: "http://localhost:3000",
     credentials: true

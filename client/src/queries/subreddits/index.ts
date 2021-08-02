@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_SUBREDDITS = gql`
-  query Query {
+  query fetchSubreddits{
     subreddits {
       _id
       name
@@ -11,7 +11,7 @@ export const FETCH_SUBREDDITS = gql`
 `;
 
 export const FETCH_SUBREDDIT = gql`
-  query Query($name: String!) {
+  query fetchSubreddit($name: String!) {
     posts(name: $name) {
       _id
       title
@@ -30,7 +30,7 @@ export const FETCH_SUBREDDIT = gql`
 `;
 
 export const ADD_SUBREDDIT = gql`
-  mutation Mutation($item: SubredditInput) {
+  mutation addSubreddit($item: SubredditInput) {
     addSubreddit(item: $item) {
       _id
     }
@@ -38,7 +38,7 @@ export const ADD_SUBREDDIT = gql`
 `;
 
 export const REMOVE_SUBREDDIT = gql`
-  mutation Mutation($_id: ID!) {
+  mutation removeSubreddit($_id: ID!) {
     removeSubreddit(_id: $_id) {
       _id
     }
@@ -46,7 +46,7 @@ export const REMOVE_SUBREDDIT = gql`
 `;
 
 export const UPDATE_SUBREDDIT = gql`
-  mutation Mutation($_id: ID!, $update: String) {
+  mutation updateSubreddit($_id: ID!, $update: String) {
     updateSubreddit(_id: $_id, update: $update) {
       _id
     }

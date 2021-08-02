@@ -1,16 +1,15 @@
 import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
-  query Query($_id: ID!) {
-    user(_id: $id) {
+  mutation loginUser($email: String!) {
+    user(email: $email) {
       _id
-      name
     }
   }
 `;
 
 export const LOGOUT_USER = gql`
-  query Query($_id: ID!) {
+  query logoutUser($_id: ID!) {
     user(_id: $id) {
       _id
       name
@@ -19,7 +18,7 @@ export const LOGOUT_USER = gql`
 `;
 
 export const REGISTER_USER = gql`
-  mutation Mutation($item: UserInput) {
+  mutation registerUser($item: UserInput) {
     addUser(item: $item) {
       _id
     }
@@ -27,7 +26,7 @@ export const REGISTER_USER = gql`
 `;
 
 export const REMOVE_USER = gql`
-  mutation Mutation($_id: ID!) {
+  mutation removeUser($_id: ID!) {
     removeUser(_id: $_id) {
       _id
     }
@@ -35,7 +34,7 @@ export const REMOVE_USER = gql`
 `;
 
 export const UPDATE_USER = gql`
-  mutation Mutation($_id: ID!, $update: String) {
+  mutation updateUser($_id: ID!, $update: String) {
     updateUser(_id: $_id, update: $update) {
       _id
     }
