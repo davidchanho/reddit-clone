@@ -21,6 +21,7 @@ export const FETCH_POSTS = gql`
 export const FETCH_POST = gql`
   query Query($_id: ID!) {
     post(_id: $_id) {
+      _id
       title
       subreddit {
         name
@@ -29,6 +30,10 @@ export const FETCH_POST = gql`
         name
       }
       date
+      comments {
+        _id
+        body
+      }
     }
   }
 `;
@@ -36,7 +41,7 @@ export const FETCH_POST = gql`
 export const ADD_POST = gql`
   mutation Mutation($item: PostInput) {
     addPost(item: $item) {
-      title
+      _id
     }
   }
 `;
@@ -44,7 +49,7 @@ export const ADD_POST = gql`
 export const REMOVE_POST = gql`
   mutation Mutation($_id: ID!) {
     removePost(_id: $_id) {
-      title
+      _id
     }
   }
 `;

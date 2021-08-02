@@ -5,6 +5,7 @@ export interface IUser {
   _id: string;
   name: string;
   email: string;
+  password: string;
   avatar: string;
   followers: IUser[];
   subreddits: ISubreddit[];
@@ -12,4 +13,5 @@ export interface IUser {
   posts: IPost[];
   comments: IComment[];
   date: string;
+  karma: number;
 }

@@ -13,11 +13,13 @@ export const typeDefs = gql`
     avatar: String!
     followers: [User]
     date: String!
+    karma: Int
   }
 
   input UserInput {
     name: String
     email: String
+    password: String
     avatar: String
   }
 

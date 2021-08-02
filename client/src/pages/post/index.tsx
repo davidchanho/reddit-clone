@@ -18,11 +18,11 @@ function PostPage() {
   if (error) return <p>Error</p>;
 
   return (
-    <div className="w-full">
+    <div>
       <div>{data.post.title}</div>
-      <div className="w-full">
+      <div>
         <CreateComment />
-        <Comments post={data.post} />
+        <Comments comments={data.post.comments} />
       </div>
     </div>
   );

@@ -11,10 +11,12 @@ function CreatePost() {
   return (
     <Card>
       <div className="grid grid-cols-4">
-        <UserCircleIcon className="w-6 h-6" />
-        <NavLink className='w-full' to="/create">asdf</NavLink>
-        <PhotographIcon className="w-6 h-6" />
-        <LinkIcon className="w-6 h-6" />
+        <UserCircleIcon className="w-12 h-12 cursor-pointer" />
+        <NavLink className="w-full" to="/create">
+          asdf
+        </NavLink>
+        <PhotographIcon className="w-12 h-12 cursor-pointer hover:bg-gray-200" />
+        <LinkIcon className="w-12 h-12 cursor-pointer hover:bg-gray-200" />
       </div>
     </Card>
   );

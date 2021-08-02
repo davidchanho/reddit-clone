@@ -9,7 +9,7 @@ function App() {
   if (!client) {
     return <h2>Initializing app...</h2>;
   }
-  
+
   return (
     <ApolloProvider client={client}>
       <Routing />

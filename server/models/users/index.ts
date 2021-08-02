@@ -2,8 +2,9 @@ import mongoose, { Schema } from "mongoose";
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  email: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
   avatar: { type: String, required: true },
+  password: { type: String, required: true, unique: true },
   followers: [{ type: Schema.Types.ObjectId, ref: "user" }],
   subreddits: [{ type: Schema.Types.ObjectId, ref: "subreddit" }],
   bookmarks: [{ type: Schema.Types.ObjectId, ref: "post" }],
@@ -11,6 +12,6 @@ const userSchema = new mongoose.Schema({
   karma: { type: Number },
 });
 
-const Post = mongoose.model("user", userSchema);
+const User = mongoose.model("user", userSchema);
 
-export default Post;
+export default User;
