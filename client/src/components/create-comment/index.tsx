@@ -1,18 +1,22 @@
 import { useMutation } from "@apollo/client";
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useParams } from "react-router-dom";
+import useClient from "../../hooks/client";
 import { ADD_COMMENT } from "../../queries/comments";
 
 function CreateComment() {
+  const params = useParams();
   const initialForm = {
     body: "",
     user: "61078b338331408da0a860d7",
-    post: "61078bd78331408da0a860de",
+    post: params._id,
   };
+
+  const { clearCache } = useClient();
 
   const [form, setForm] = useState(initialForm);
 
   const [addComment] = useMutation(ADD_COMMENT, {
-    refetchQueries: ["FETCH_POST", "FETCH_COMMENTS"],
     variables: { item: form },
   });
 
@@ -28,6 +32,7 @@ function CreateComment() {
     e.preventDefault();
     addComment();
     setForm(initialForm);
+    clearCache();
   };
 
   return (

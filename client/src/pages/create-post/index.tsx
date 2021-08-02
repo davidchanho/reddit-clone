@@ -2,44 +2,44 @@ import { useMutation, useQuery } from "@apollo/client";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ISubreddit } from "../../../../shared/types";
+import useClient from "../../hooks/client";
 import { ADD_POST, FETCH_SUBREDDITS } from "../../queries";
 
 const initialForm = {
   title: "",
   body: "",
-  user: "610207571eb82f228f738fa1",
-  subreddit: "610207251eb82f228f738f9f",
+  user: "61078b338331408da0a860d7",
+  subreddit: "61078adb8331408da0a860d3",
 };
 
 function CreatePostPage() {
-  const [form, setForm] = useState({ item: initialForm });
-  const { loading, error, data } = useQuery(FETCH_SUBREDDITS, {
-    variables: form,
-  });
+  const [form, setForm] = useState(initialForm);
+
+  const { loading, error, data } = useQuery(FETCH_SUBREDDITS);
+
   const [addPost] = useMutation(ADD_POST, {
     refetchQueries: ["FETCH_POSTS"],
+    variables: { item: form },
   });
   const navigate = useNavigate();
+  const { clearCache } = useClient();
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setForm({
-      item: {
-        ...form.item,
-        [name]: value,
-      },
+      ...form,
+      [name]: value,
     });
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     addPost();
-    setForm({
-      item: initialForm,
-    });
+    setForm(initialForm);
     navigate("/");
+    clearCache();
   };
 
   if (loading) return <p>Loading...</p>;
@@ -48,7 +48,7 @@ function CreatePostPage() {
   return (
     <form className="flex flex-col w-full mx-auto" onSubmit={handleSubmit}>
       <select
-        value={form.item.subreddit}
+        value={form.subreddit}
         name="subreddit"
         onChange={handleChange}
       >
@@ -62,7 +62,7 @@ function CreatePostPage() {
       <input
         onChange={handleChange}
         type="text"
-        value={form.item.title}
+        value={form.title}
         name="title"
         placeholder="title"
       />
@@ -70,7 +70,7 @@ function CreatePostPage() {
       <input
         onChange={handleChange}
         type="text"
-        value={form.item.body}
+        value={form.body}
         name="body"
         placeholder="body"
       />

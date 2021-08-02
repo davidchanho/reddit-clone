@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AdminDashboard from "../../pages/admin";
 import CreatePostPage from "../../pages/create-post";
 import Login from "../../pages/login";
 import PostPage from "../../pages/post";
@@ -20,6 +21,7 @@ function Routing() {
         <Route path="/create" element={<CreatePostPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
   );

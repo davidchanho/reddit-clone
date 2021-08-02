@@ -83,13 +83,10 @@ function useClient() {
       return;
     }
     persistor.purge();
+    window.location.reload();
   }, [persistor]);
 
-  const reload = useCallback(() => {
-    window.location.reload();
-  }, []);
-
-  return { client, clearCache, reload };
+  return { client, clearCache };
 }
 
 export default useClient;
