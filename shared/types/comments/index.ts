@@ -6,6 +6,6 @@ export interface IComment {
   user: IUser;
   body: string;
   likes: number;
-  comments: number;
+  comments: IComment[];
   date: string;
 }

@@ -2,10 +2,10 @@ import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 import { InMemoryCache } from "@apollo/client/core";
 import { offsetLimitPagination } from "@apollo/client/utilities";
 import { CachePersistor, LocalForageWrapper } from "apollo3-cache-persist";
-import _ from "lodash";
-import React, { useCallback, useEffect, useState } from "react";
-import { daysAgo } from "../../helpers";
 import localforage from "localforage";
+import _ from "lodash";
+import { useCallback, useEffect, useState } from "react";
+import { daysAgo } from "../../helpers";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -29,6 +29,15 @@ const cache = new InMemoryCache({
       },
     },
     Subreddit: {
+      fields: {
+        name: {
+          read(name, options) {
+            return _.capitalize(name);
+          },
+        },
+      },
+    },
+    User: {
       fields: {
         name: {
           read(name, options) {
@@ -80,8 +89,7 @@ function useClient() {
     window.location.reload();
   }, []);
 
-
   return { client, clearCache, reload };
 }
 
-export default useClient
+export default useClient;

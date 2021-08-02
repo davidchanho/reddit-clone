@@ -1,7 +1,8 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
 import { useParams } from "react-router-dom";
-import { IComment } from "../../../../shared/types";
+import Comments from "../../components/comments";
+import CreateComment from "../../components/create-comment";
 import { FETCH_POST } from "../../queries";
 
 function PostPage() {
@@ -17,10 +18,11 @@ function PostPage() {
   if (error) return <p>Error</p>;
 
   return (
-    <div>
+    <div className="w-full">
       <div>{data.post.title}</div>
-      <div>
-       
+      <div className="w-full">
+        <CreateComment />
+        <Comments post={data.post} />
       </div>
     </div>
   );

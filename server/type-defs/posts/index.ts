@@ -34,7 +34,7 @@ export const typeDefs = gql`
   }
 
   extend type Subreddit {
-    posts: [Post]
+    posts(name: String!): [Post]
     post(_id: ID!): Post
   }
 

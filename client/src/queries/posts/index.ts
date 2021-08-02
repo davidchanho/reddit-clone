@@ -22,9 +22,13 @@ export const FETCH_POST = gql`
   query Query($_id: ID!) {
     post(_id: $_id) {
       title
-      comments {
-        body
+      subreddit {
+        name
       }
+      user {
+        name
+      }
+      date
     }
   }
 `;

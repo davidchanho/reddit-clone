@@ -20,7 +20,7 @@ export const typeDefs = gql`
   type Mutation {
     addSubreddit(item: SubredditInput): Subreddit
     removeSubreddit(_id: ID!): Subreddit
-    updateSubreddit(_id: ID!, item: SubredditInput): Subreddit
+    updateSubreddit(_id: ID!, update: String): Subreddit
   }
 
   extend type User {

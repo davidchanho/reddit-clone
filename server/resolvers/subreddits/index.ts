@@ -11,7 +11,7 @@ const Query = {
 
 const Subreddit = {
   posts: (parent: any, args: any, { Post }: any) => {
-    return Post.find({ subreddit: parent._id });
+    return Post.find({ subreddit: args.name });
   },
   post: (parent: any, args: any, { Post }: any) => {
     return Post.findById(args._id);

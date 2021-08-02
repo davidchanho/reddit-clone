@@ -13,7 +13,9 @@ const initialForm = {
 
 function CreatePostPage() {
   const [form, setForm] = useState({ item: initialForm });
-  const { loading, error, data } = useQuery(FETCH_SUBREDDITS);
+  const { loading, error, data } = useQuery(FETCH_SUBREDDITS, {
+    variables: form,
+  });
   const [addPost] = useMutation(ADD_POST, {
     refetchQueries: ["FETCH_POSTS"],
   });
@@ -33,9 +35,7 @@ function CreatePostPage() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addPost({
-      variables: form,
-    });
+    addPost();
     setForm({
       item: initialForm,
     });
