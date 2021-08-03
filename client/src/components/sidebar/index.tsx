@@ -6,12 +6,12 @@ import Section from "./Section";
 
 function Sidebar() {
   const { loading, error, data } = useQuery(FETCH_SUBREDDITS);
-  
+
   if (loading) return null;
   if (error) return null;
 
   return (
-    <div className={`hidden lg:block lg:w-2/12 lg:col-span-3 xl:col-span-2`}>
+    <div className="hidden lg:block lg:w-2/12 lg:col-span-3 xl:col-span-2">
       <nav
         aria-label="Sidebar"
         className="sticky top-4 divide-y divide-gray-300"

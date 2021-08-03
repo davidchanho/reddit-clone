@@ -1,6 +1,12 @@
 import { IComment, IPost } from "..";
 import { ISubreddit } from "./../subreddits/index";
 
+export enum Role {
+  ADMIN = "ADMIN",
+  USER = "USER",
+  MOD = "MOD",
+}
+
 export interface IUser {
   _id: string;
   name: string;
@@ -14,4 +20,5 @@ export interface IUser {
   comments: IComment[];
   date: string;
   karma: number;
+  role: Role;
 }

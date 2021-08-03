@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { Role } from "./../../../shared/types/users/index";
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -10,6 +11,11 @@ const userSchema = new mongoose.Schema({
   bookmarks: [{ type: Schema.Types.ObjectId, ref: "post" }],
   date: { type: String, default: new Date().toString() },
   karma: { type: Number },
+  role: {
+    type: String,
+    enum: Role,
+    default: Role.USER,
+  },
 });
 
 const User = mongoose.model("user", userSchema);

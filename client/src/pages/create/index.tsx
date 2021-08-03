@@ -11,7 +11,7 @@ const initialForm = {
   subreddit: "61078adb8331408da0a860d3",
 };
 
-function CreatePostPage() {
+function Create() {
   const [form, setForm] = useState(initialForm);
 
   const { loading, error, data } = useQuery(FETCH_SUBREDDITS);
@@ -74,4 +74,4 @@ function CreatePostPage() {
   );
 }
 
-export default CreatePostPage;
+export default Create;

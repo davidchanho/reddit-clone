@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { ReactComponent as RedditLogo } from "../../assets/logos/Reddit_Lockup_OnWhite.svg";
 
 function Brand() {
   return (
-    <div className="">
-      <p>reddit</p>
-    </div>
+    <Link to="/">
+      <RedditLogo className="h-14 w-auto" />
+    </Link>
   );
 }
 

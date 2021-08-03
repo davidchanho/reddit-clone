@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { MediaType } from "./../../../shared/types/posts/index";
 
 const postSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -10,6 +11,11 @@ const postSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "subreddit",
     required: true,
+  },
+  mediaType: {
+    type: String,
+    enum: MediaType,
+    default: MediaType.TEXT,
   },
   date: { type: String, default: new Date().toString() },
 });
